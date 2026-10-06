@@ -1,59 +1,50 @@
-/* ─────────────────────────────────────────────────────────────
-   PROFILE — edit this file to change who the site is about.
-   Anything marked TODO is a placeholder waiting for real data.
-   ───────────────────────────────────────────────────────────── */
+/* Who the site is about. Everything here comes straight from the CV. */
 
 export const PROFILE = {
-  firstName: 'Mukesh',
-  middleName: 'Kumar',
-  lastName: 'Pandey',
-  initials: 'MKP',
-  role: 'Data Scientist & ML Engineer',
+  first: 'Mukesh',
+  last: 'Kumar Pandey',
+  short: 'Mukesh',
+  role: 'Data Science & ML',
+  school: 'B.Tech CSE · Lovely Professional University',
   location: 'Punjab, India',
-  timezone: 'Asia/Kolkata',
-  status: 'Open to internships — 2026',
-  thesis:
-    'I build retrieval systems, LLM pipelines and analytics that answer real questions — grounded in evidence, measured end to end, and shipped where people actually use them.',
-
+  status: 'Open to data science & ML internships',
   email: 'mukeshkumarpandey82@gmail.com',
   resume: '/Mukesh_Kumar_Pandey_CV.pdf',
-
-  // TODO: drop a square photo into /public/images/ and set the path, e.g. '/images/mukesh.jpg'
-  photo: null,
-
-  socials: [
-    { label: 'GitHub', handle: 'mukesh4783', href: 'https://github.com/mukesh4783', icon: 'GitHub' },
-    { label: 'LinkedIn', handle: 'in/mukesh4783', href: 'https://www.linkedin.com/in/mukesh4783/', icon: 'LinkedIn' },
-    { label: 'LeetCode', handle: 'TODO-handle', href: 'https://leetcode.com/', icon: 'LeetCode' }, // TODO
-    { label: 'Email', handle: 'mukeshkumarpandey82', href: 'mailto:mukeshkumarpandey82@gmail.com', icon: 'Mail' },
-  ],
+  /* Square-ish headshot, ~600px wide, face near the centre. Initials show until it exists. */
+  photo: '/mukesh.webp',
+  initials: 'MK',
+  github: 'https://github.com/mukesh4783',
+  linkedin: 'https://www.linkedin.com/in/mukesh4783/',
 };
 
 export const NAV = [
-  { id: 'toolkit', label: 'Toolkit' },
   { id: 'work', label: 'Work' },
-  { id: 'record', label: 'Record' },
+  { id: 'skills', label: 'Skills' },
+  { id: 'timeline', label: 'Timeline' },
   { id: 'about', label: 'About' },
   { id: 'contact', label: 'Contact' },
 ];
 
-/* Headline numbers for the "At a glance" strip. */
-export const GLANCE = [
-  { value: 8.89, decimals: 2, suffix: '', label: 'CGPA', note: 'B.Tech CSE · LPU', viz: 'gauge', max: 10 },
-  { value: 3, decimals: 0, suffix: '', label: 'AI systems shipped', note: 'RAG · GenAI video · Gov-tech', viz: 'dots' },
-  { value: 15, decimals: 0, prefix: 'Top ', suffix: '', label: 'Resurgence Hackathon', note: 'Lovely Professional University', viz: 'rank' },
-  { value: 70, decimals: 0, suffix: '%', label: 'Scripting time cut', note: 'Manimax vs. hand-written Manim', viz: 'drop' },
+/* Rendered as a pandas-style summary table under the hero. */
+export const SUMMARY = [
+  { key: 'cgpa', value: 8.89, decimals: 2, context: 'B.Tech CSE, LPU' },
+  { key: 'ai_systems_built', value: 3, context: 'RAG · GenAI video · Gov-tech' },
+  { key: 'hackathon_rank', value: 15, prefix: 'top ', context: 'Resurgence Hackathon, LPU' },
+  { key: 'certifications', value: 3, context: 'Oracle · Infosys ×2' },
+  { key: 'scripting_time_cut', value: 70, prefix: '−', suffix: '%', context: 'Manimax vs. hand-written Manim' },
 ];
 
 export const ABOUT = {
+  lead: 'I like problems where the answer has to be earned from the data — not guessed.',
   paragraphs: [
-    'I’m a Computer Science undergraduate at Lovely Professional University who fell for data the moment a scatter plot told me something a spreadsheet couldn’t. Since then I’ve been chasing the same feeling — turning noise into a clear, defensible answer.',
-    'Lately that means large language models: retrieval pipelines that refuse to hallucinate, local models that render math videos, and chatbots that speak the languages of the people using them. I care about the unglamorous parts too — chunking strategy, evaluation, latency, and whether the thing still works next week.',
+    'I’m a Computer Science undergraduate at Lovely Professional University. Most of what I build sits where data meets language models: retrieval pipelines that refuse to make things up, local LLMs that write and render maths lessons, and dashboards that help people see what is stuck and why.',
+    'I care about the unglamorous parts too — chunk sizes, evaluation, latency, cost per run, and whether the thing still works when the source page changes next week.',
   ],
   facts: [
-    { k: 'Studying', v: 'B.Tech CSE, LPU — 2024 → present' },
+    { k: 'Studying', v: 'B.Tech CSE, LPU · 2024 → now' },
     { k: 'Based in', v: 'Punjab, India' },
-    { k: 'Currently', v: 'LoRA / QLoRA fine-tuning experiments' },
-    { k: 'Outside code', v: 'NCC cadet · B certificate, A grade' },
+    { k: 'Exploring', v: 'LoRA / QLoRA fine-tuning' },
+    { k: 'Off-screen', v: 'NCC cadet · “B” certificate, A grade' },
   ],
+  softSkills: ['Problem-solving', 'Self-learning', 'Time management', 'Multitasking'],
 };

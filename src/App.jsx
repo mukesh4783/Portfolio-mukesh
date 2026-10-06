@@ -1,36 +1,26 @@
-import React, { useCallback, useState } from 'react';
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import Marquee from './components/Marquee';
-import Glance from './components/Glance';
-import Toolkit from './components/Toolkit';
-import Work from './components/Work';
-import Record from './components/Record';
-import About from './components/About';
-import Contact from './components/Contact';
-import useScrollReveal from './hooks/useScrollReveal';
+import React from 'react';
+import Nav from './components/Nav';
+import Hero from './components/hero/Hero';
+import Summary from './components/hero/Summary';
+import Work from './components/work/Work';
+import Skills from './components/skills/Skills';
+import Timeline from './components/record/Timeline';
+import About from './components/about/About';
+import Contact from './components/contact/Contact';
+import useReveal from './hooks/useReveal';
 
 export default function App() {
-  const [techFilter, setTechFilter] = useState(null);
-  useScrollReveal();
-
-  /* Picking a tool in the Toolkit filters the projects and jumps there. */
-  const pickTech = useCallback((tech) => {
-    setTechFilter(tech);
-    document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' });
-  }, []);
-
+  useReveal();
   return (
     <>
-      <a href="#work" className="sr-only">Skip to projects</a>
-      <Navbar />
+      <a href="#work" className="sr-only skip">Skip to projects</a>
+      <Nav />
       <main>
         <Hero />
-        <Marquee />
-        <Glance />
-        <Toolkit onPickTech={pickTech} />
-        <Work filter={techFilter} onFilter={setTechFilter} />
-        <Record />
+        <Summary />
+        <Work />
+        <Skills />
+        <Timeline />
         <About />
         <Contact />
       </main>

@@ -1,0 +1,139 @@
+.hero { padding: clamp(24px, 4vw, 48px) 0 0; }
+
+.hero__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+  gap: clamp(32px, 5vw, 72px);
+  align-items: center;
+}
+
+.hero__status {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 7px 14px 7px 12px; border: 1px solid var(--rule); border-radius: 999px;
+  font-size: 14px; font-weight: 500; color: var(--ink-2);
+}
+.hero__live { position: relative; width: 9px; height: 9px; border-radius: 50%; background: var(--green); }
+.hero__live::after {
+  content: ''; position: absolute; inset: -4px; border-radius: 50%;
+  border: 2px solid var(--green); animation: live 2s var(--ease) infinite;
+}
+@keyframes live { from { transform: scale(0.5); opacity: 1; } to { transform: scale(1.6); opacity: 0; } }
+
+/* The name is the headline: three stacked words, letters revealed through a mask. */
+.hero__name {
+  margin-top: 26px;
+  font-size: clamp(64px, 8.2vw, 118px);
+  font-weight: 700;
+  line-height: 0.86;
+  letter-spacing: -0.055em;
+  color: var(--ink);
+}
+.hero__name-lines { display: block; }
+.hero__name-mask {
+  display: block;
+  overflow: hidden;
+  /* Room for descenders (the y in Pandey) without loosening the stack. */
+  padding: 0.02em 0.08em 0.12em 0;
+  margin-bottom: -0.12em;
+}
+.hero__name-line { display: inline-block; white-space: nowrap; }
+.hero__name-char { display: inline-block; will-change: transform; }
+.hero__name-dot { display: inline-block; color: var(--blue); transform-origin: 50% 80%; }
+
+.hero__tagline {
+  margin-top: 30px;
+  max-width: 17em;
+  font-size: clamp(24px, 2.35vw, 32px);
+  font-weight: 600;
+  line-height: 1.22;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+  text-wrap: balance;
+}
+
+.hero__messy { position: relative; display: inline-block; white-space: nowrap; }
+.hero__messy svg {
+  position: absolute; left: -2%; bottom: -0.08em; width: 104%; height: 0.28em; overflow: visible;
+}
+.hero__messy path {
+  fill: none; stroke: var(--red); stroke-width: 5; stroke-linecap: round;
+  stroke-dasharray: 260; stroke-dashoffset: 260; animation: scribble 1s 1.15s var(--ease) forwards;
+}
+@keyframes scribble { to { stroke-dashoffset: 0; } }
+
+.hero__mark {
+  color: inherit; padding: 0 0.08em; margin: 0 -0.04em;
+  background: linear-gradient(transparent 58%, var(--yellow) 58%, var(--yellow) 92%, transparent 92%) no-repeat;
+  background-size: 0% 100%; animation: highlight 0.7s 1.75s var(--ease) forwards;
+}
+@keyframes highlight { to { background-size: 100% 100%; } }
+
+.hero__lede { margin-top: 18px; font-size: clamp(17px, 1.5vw, 19px); color: var(--ink-2); max-width: 30em; text-wrap: pretty; }
+
+.hero__cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+
+.hero__meta { display: flex; flex-wrap: wrap; gap: 8px 22px; margin: 30px 0 0; padding: 0; list-style: none; font-size: 15px; color: var(--ink-2); }
+.hero__meta li, .hero__meta a { display: inline-flex; align-items: center; gap: 7px; }
+.hero__meta a { text-decoration: none; }
+.hero__meta a:hover { color: var(--blue); }
+
+/* Right side: a large portrait with the playground card overlapping its lower part.
+   Percent margins resolve against the stage width, so the overlap scales with it:
+   portrait 50% wide at 4:5 is 62.5% of the stage width tall; pulling the card up 24%
+   covers the bottom ~38% (shoulders), keeping the face clear. */
+.hero__stage { position: relative; }
+
+.hero__portrait {
+  position: relative;
+  width: 50%;
+  margin: 0;
+  margin-left: auto;
+  aspect-ratio: 4 / 5;
+  border-radius: 22px;
+  overflow: hidden;
+  background: var(--blue-soft);
+  box-shadow: 0 30px 60px -36px rgba(33, 70, 255, 0.35);
+}
+.hero__portrait img {
+  width: 100%; height: 100%; max-width: none;
+  object-fit: cover; object-position: 50% 25%;
+}
+/* Until a real photo exists: initials on chart paper, in the page's own grid language. */
+.hero__portrait-empty {
+  position: absolute; inset: 0;
+  display: grid; place-items: center;
+  background-image:
+    linear-gradient(rgba(33, 70, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(33, 70, 255, 0.08) 1px, transparent 1px);
+  background-size: 28px 28px;
+  background-position: -1px -1px;
+}
+.hero__portrait-initials {
+  font-size: clamp(56px, 7vw, 96px); font-weight: 700; letter-spacing: -0.05em;
+  color: var(--blue);
+}
+
+.hero__play {
+  position: relative;
+  z-index: 1;
+  width: 80%;
+  margin-top: -24%;
+}
+/* The card is narrower here than on its own, so keep its controls on one row. */
+.hero__play .fit__controls { gap: 5px; }
+.hero__play .fit__seg, .hero__play .fit__tog { padding: 0 10px; font-size: 13px; }
+.hero__note {
+  position: absolute; top: -40px; left: 4px; font-size: 27px; color: var(--blue);
+  transform: rotate(-3deg);
+  white-space: nowrap;
+}
+
+@media (max-width: 980px) {
+  .hero__grid { grid-template-columns: minmax(0, 1fr); }
+  .hero__stage { margin-top: 48px; }
+  /* Stacked: a slight overlap only, so the full-width card never reaches the face. */
+  .hero__portrait { width: 72%; }
+  .hero__play { width: 100%; margin-top: -12%; }
+  .hero__note { display: none; }
+  .hero__name { font-size: clamp(60px, 17vw, 132px); }
+}

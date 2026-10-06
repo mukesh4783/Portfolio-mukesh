@@ -1,0 +1,40 @@
+.sum { padding-top: clamp(56px, 8vw, 96px); }
+
+.sum__prompt { font-size: 13px; color: var(--ink-2); margin-bottom: 14px; }
+.sum__in { color: var(--blue); margin-right: 8px; }
+.sum__op { color: var(--red); }
+
+.sum__scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; border-top: 2px solid var(--ink); }
+
+.sum__table { width: 100%; min-width: 760px; border-collapse: collapse; }
+.sum__table th, .sum__table td { text-align: left; padding: 14px 18px 14px 0; vertical-align: top; }
+.sum__table thead th { font-size: 12px; font-weight: 500; color: var(--ink-3); border-bottom: 1px solid var(--rule); }
+.sum__table tbody tr:first-child { border-bottom: 1px solid var(--rule); }
+.sum__table tbody tr:nth-child(2) { background: transparent; }
+.sum__idx { width: 90px; font-size: 12px; font-weight: 500; color: var(--ink-3); }
+
+.sum__val {
+  font-size: clamp(34px, 4vw, 52px); font-weight: 700; letter-spacing: -0.035em; line-height: 1;
+  padding-top: 22px !important; padding-bottom: 20px !important;
+  font-variant-numeric: tabular-nums;
+}
+.sum__table td:nth-child(2) { color: var(--blue); }
+.sum__table td:nth-child(3) { color: var(--ink); }
+.sum__table td:nth-child(4) { color: var(--red); }
+.sum__table td:nth-child(5) { color: var(--ink); }
+.sum__table td:nth-child(6) { color: var(--green); }
+.sum__ctx { font-size: 14.5px; color: var(--ink-2) !important; line-height: 1.4; }
+
+.sum__list { display: none; margin: 0; }
+@media (max-width: 640px) {
+  .sum__scroll { display: none; }
+  .sum__list { display: block; border-top: 2px solid var(--ink); }
+  .sum__list div { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 12px; padding: 14px 0; border-bottom: 1px solid var(--rule); }
+  .sum__list dt { font-size: 11px; color: var(--ink-3); grid-column: 1 / -1; }
+  .sum__list dd { display: contents; }
+  .sum__list b { font-size: 34px; letter-spacing: -0.035em; line-height: 1; order: 2; }
+  .sum__list span { font-size: 14px; color: var(--ink-2); align-self: center; }
+  .sum__list div:nth-child(1) b { color: var(--blue); }
+  .sum__list div:nth-child(3) b { color: var(--red); }
+  .sum__list div:nth-child(5) b { color: var(--green); }
+}

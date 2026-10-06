@@ -1,0 +1,44 @@
+.ct__card {
+  display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 32px; align-items: center;
+  padding: clamp(28px, 5vw, 64px); border-radius: 32px; border: 1.5px solid var(--ink);
+  box-shadow: 10px 10px 0 var(--yellow);
+}
+
+.ct__code { font-size: 12.5px; color: var(--ink-3); }
+.ct__code span { color: var(--blue); }
+.ct__code b { color: var(--green); font-weight: 600; }
+
+.ct__title {
+  margin-top: 18px; font-size: clamp(34px, 4.4vw, 58px); line-height: 1; letter-spacing: -0.04em; font-weight: 700;
+}
+.ct__title span { color: var(--blue); }
+.ct__lede { margin-top: 20px; font-size: clamp(17px, 1.6vw, 19px); color: var(--ink-2); max-width: 560px; }
+
+.ct__actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 30px; }
+.ct__actions .btn { max-width: 100%; }
+.ct__actions .btn:first-child { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+.ct__links { display: flex; flex-wrap: wrap; gap: 8px 24px; list-style: none; margin: 26px 0 0; padding: 0; }
+.ct__links a { display: inline-flex; align-items: center; gap: 7px; font-weight: 600; text-decoration: none; }
+.ct__links a:hover { color: var(--blue); }
+
+.ct__sig { width: 100%; height: auto; overflow: visible; }
+.ct__sig-axis { stroke: var(--ink); stroke-width: 1.5; }
+.ct__sig-half { stroke: var(--ink-3); stroke-dasharray: 4 5; }
+.ct__sig-lbl { font-family: var(--font-mono); font-size: 10px; fill: var(--ink-3); }
+.ct__sig-curve { fill: none; stroke: var(--blue); stroke-width: 4; stroke-linecap: round; }
+.ct__sig-dot { fill: var(--red); stroke: var(--paper); stroke-width: 3; animation: bob 2.4s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+.ct__sig-you { font-family: var(--font-hand); font-size: 26px; fill: var(--red); }
+@keyframes bob { 50% { transform: translateY(-4px); } }
+
+.ct__footer {
+  display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px 24px;
+  padding-top: clamp(56px, 8vw, 96px); padding-bottom: 36px; font-size: 14px; color: var(--ink-3);
+}
+.ct__footer .mono { font-size: 11px; }
+.ct__footer a { text-decoration: none; }
+.ct__footer a:hover { color: var(--ink); }
+
+@media (max-width: 860px) {
+  .ct__card { grid-template-columns: minmax(0, 1fr); box-shadow: 6px 6px 0 var(--yellow); }
+}

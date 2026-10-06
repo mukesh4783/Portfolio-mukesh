@@ -1,151 +1,97 @@
-/* ─────────────────────────────────────────────────────────────
-   PROJECTS — single source of truth for the Work section and
-   the Toolkit "used in N projects" counts.
-
-   visual: which animated simulation renders on the card
-           ('rag' | 'gov' | 'manim' | 'billing')
-   stack:  names must be known to TechIcon (unknown names fall
-           back to a monogram, so nothing breaks).
-   ───────────────────────────────────────────────────────────── */
+/* Projects — the single source for the Work section and the skills matrix.
+   `viz` picks the interactive figure rendered beside each project. */
 
 export const PROJECTS = [
   {
-    id: 'rag',
-    no: 'Fig. 01',
-    year: 'Jul 2026',
+    id: 'webrag',
     name: 'WebRAG',
-    subtitle: 'Grounded Q&A Bot',
-    tagline: 'Ask a question about any web page — get an answer that can only come from that page.',
-    kind: 'Retrieval-augmented generation',
-    role: 'Solo build — ML & retrieval engineering',
-    href: 'https://github.com/mukesh4783', // TODO: exact repo URL
-    demo: null, // TODO: live demo URL
-    visual: 'rag',
+    kicker: 'Retrieval-augmented generation',
+    date: 'Jul 2026',
+    color: 'blue',
+    viz: 'retrieval',
+    title: 'A Q&A bot that only answers from the page you give it.',
+    summary:
+      'Paste a URL, ask a question. WebRAG retrieves the relevant chunks of that live page and answers strictly from them — and when the answer isn’t there, it says so instead of guessing.',
+    how: [
+      'LangChain WebBaseLoader → RecursiveCharacterTextSplitter (1000-char chunks, 200 overlap)',
+      'OpenAI text-embedding-3-small vectors in a local Chroma store; GPT-4o-mini answers from retrieved context only',
+      'SHA-256 hash per source detects page changes; Streamlit UI shows a diff-based freshness report',
+    ],
+    metrics: [
+      { value: '≈0%', label: 'hallucinated answers on out-of-scope questions' },
+      { value: '+30%', label: 'retrieval relevance' },
+      { value: '−40%', label: 'per-query latency vs cloud vector DBs' },
+    ],
     stack: ['Python', 'LangChain', 'Chroma', 'OpenAI', 'Streamlit'],
-    highlights: [
-      { value: 0, prefix: '≈', suffix: '%', label: 'hallucination on out-of-scope queries' },
-      { value: 30, prefix: '+', suffix: '%', label: 'retrieval relevance' },
-      { value: 40, prefix: '−', suffix: '%', label: 'per-query latency vs cloud vector DBs' },
-    ],
-    flowTitle: 'Retrieval pipeline',
-    flow: [
-      { label: 'Web loader', icon: 'Globe' },
-      { label: 'Chunk 1000/200', icon: 'Split' },
-      { label: 'Embed', icon: 'OpenAI' },
-      { label: 'Chroma store', icon: 'Chroma' },
-      { label: 'GPT-4o-mini', icon: 'OpenAI' },
-      { label: 'Cited answer', icon: 'Check' },
-    ],
-    detail: [
-      'A Retrieval-Augmented Generation app that answers strictly from live, user-supplied web pages instead of the model’s training memory. If the answer isn’t on the page, it says so.',
-      'LangChain’s WebBaseLoader pulls the page; a RecursiveCharacterTextSplitter cuts it into 1000-character chunks with 200-character overlap; OpenAI text-embedding-3-small vectors go into a local Chroma store; GPT-4o-mini answers with the retrieved context only.',
-      'Every source is SHA-256 hashed — when a page changes, the app detects it, re-indexes only what moved, and the Streamlit UI shows a diff-based freshness report.',
-    ],
+    repo: 'https://github.com/mukesh4783',
   },
   {
-    id: 'gov',
-    no: 'Fig. 02',
-    year: 'Jul 2026',
+    id: 'gramsetu',
     name: 'GramSetu',
-    subtitle: 'Digital Village Portal',
-    tagline: 'Rural administration, online — requests, schemes and certificates tracked in real time.',
-    kind: 'Full-stack · Analytics',
-    role: 'Architect & full-stack developer',
-    href: 'https://github.com/mukesh4783', // TODO: exact repo URL
-    demo: null, // TODO: Vercel URL
-    visual: 'gov',
-    stack: ['React', 'Node.js', 'Express', 'MongoDB', 'Chart.js', 'Gemini', 'Vercel', 'JWT'],
-    highlights: [
-      { value: 10, suffix: '+', label: 'citizen workflows digitised' },
-      { value: 45, prefix: '+', suffix: '%', label: 'request-processing visibility' },
-      { value: 500, suffix: '+', label: 'concurrent sessions at 99% uptime' },
+    kicker: 'Full-stack · Analytics',
+    date: 'Jul 2026',
+    color: 'green',
+    viz: 'flow',
+    title: 'Village administration, online — every request trackable.',
+    summary:
+      'A digital governance portal where citizens raise service requests, apply for welfare schemes and request certificates, then watch each one move. Admins get an analytics dashboard that shows where things are stuck.',
+    how: [
+      'React front end, Node.js + Express API, MongoDB Atlas, JWT role-based auth',
+      'Chart.js admin dashboard for backlogs and turnaround',
+      'Multilingual Google Gemini chatbot answers in the citizen’s own language; deployed on Vercel',
     ],
-    flowTitle: 'Request lifecycle',
-    flow: [
-      { label: 'Citizen request', icon: 'User' },
-      { label: 'React portal', icon: 'React' },
-      { label: 'JWT role auth', icon: 'JWT' },
-      { label: 'Express API', icon: 'Express' },
-      { label: 'MongoDB Atlas', icon: 'MongoDB' },
-      { label: 'Admin analytics', icon: 'Chart.js' },
+    metrics: [
+      { value: '10+', label: 'citizen workflows digitised' },
+      { value: '+45%', label: 'request-processing visibility' },
+      { value: '500+', label: 'concurrent sessions at 99% uptime' },
     ],
-    detail: [
-      'A full-stack digital governance portal that bridges village administration and citizen services. Citizens raise service requests, apply for welfare schemes and request certificates — and can watch each one move through the pipeline.',
-      'Administrators get an analytics dashboard built on Chart.js that surfaces backlogs and turnaround times; a multilingual Google Gemini chatbot answers questions in the language the citizen writes in.',
-      'Deployed on Vercel with MongoDB Atlas and JWT-based role authorisation, it sustained 500+ concurrent sessions at 99% uptime.',
-    ],
+    stack: ['React', 'Node.js', 'Express', 'MongoDB', 'Chart.js', 'Gemini', 'Vercel'],
+    repo: 'https://github.com/mukesh4783',
   },
   {
-    id: 'manim',
-    no: 'Fig. 03',
-    year: 'Apr 2026',
+    id: 'manimax',
     name: 'Manimax',
-    subtitle: 'Prompt → Explainer Video',
-    tagline: 'Type a concept. A local LLM writes the Manim, the narration, and renders the lesson.',
-    kind: 'Generative AI pipeline',
-    role: 'AI pipeline engineer',
-    href: 'https://github.com/mukesh4783', // TODO: exact repo URL
-    demo: null,
-    visual: 'manim',
-    stack: ['Python', 'Manim', 'Ollama', 'Docker', 'FFmpeg'],
-    highlights: [
-      { value: 70, prefix: '−', suffix: '%', label: 'manual animation scripting time' },
-      { value: 60, prefix: '−', suffix: '%', label: 'inference cost per video' },
-      { value: 50, prefix: '−', suffix: '%', label: 'environment setup time' },
+    kicker: 'Generative AI pipeline',
+    date: 'Apr 2026',
+    color: 'red',
+    viz: 'morph',
+    title: 'Type a concept. Get a rendered maths explainer video.',
+    summary:
+      'A prompt-to-video pipeline: a local LLM plans the lesson, writes the Manim animation code and the narration, and the renderer turns it into a finished video — no paid APIs involved.',
+    how: [
+      'Local LLMs generate Manim scripts for equations, graphs and transforms',
+      'Narration text generated and synchronised with the animation',
+      'Renderer and model containerised with Docker for a zero-dependency setup',
     ],
-    flowTitle: 'Generation pipeline',
-    flow: [
-      { label: 'Topic prompt', icon: 'Prompt' },
-      { label: 'Local LLM plans', icon: 'Ollama' },
-      { label: 'Manim script', icon: 'Python' },
-      { label: 'Narration', icon: 'Wave' },
-      { label: 'FFmpeg merge', icon: 'FFmpeg' },
-      { label: 'MP4 out', icon: 'Video' },
+    metrics: [
+      { value: '−70%', label: 'manual animation scripting time' },
+      { value: '−60%', label: 'inference cost per video' },
+      { value: '−50%', label: 'environment setup time' },
     ],
-    detail: [
-      'An AI pipeline that turns a natural-language prompt into a finished educational video: the model plans chapters, writes narration and generates Manim code for equations, graphs and transforms.',
-      'Everything runs on local LLMs, removing the dependency on paid external APIs; the renderer and model are containerised with Docker for a portable, zero-dependency setup.',
-    ],
+    stack: ['Python', 'Manim', 'Ollama', 'Docker'],
+    repo: 'https://github.com/mukesh4783',
   },
   {
     id: 'billing',
-    no: 'Fig. 04',
-    year: 'Jun 2025',
     name: 'Inventory & Billing',
-    subtitle: 'Management System',
-    tagline: 'Stock, pricing and invoices that stay in sync the moment an item leaves the shelf.',
-    kind: 'Data systems',
-    role: 'Developer — separate customer & manager modules',
-    href: 'https://github.com/mukesh4783', // TODO: exact repo URL
-    demo: null,
-    visual: 'billing',
+    kicker: 'Data systems',
+    date: 'Jun – Jul 2025',
+    color: 'yellow',
+    viz: 'stock',
+    title: 'Stock and invoices that stay in sync on every sale.',
+    summary:
+      'A Python + MySQL inventory and billing system with separate customer and manager modules. Managers run the catalogue, pricing and stock; customers check out and get an itemised bill automatically.',
+    how: [
+      'Manager module: product catalogue, pricing, stock levels',
+      'Customer module: cart and checkout',
+      'Real-time stock updates and automated bill generation backed by MySQL',
+    ],
+    metrics: [
+      { value: '2', label: 'role-based modules — customer & manager' },
+      { value: 'Live', label: 'stock updates on every sale' },
+      { value: 'Auto', label: 'itemised bill generation' },
+    ],
     stack: ['Python', 'MySQL'],
-    highlights: [
-      { value: 2, label: 'role-based modules — customer & manager' },
-      { text: 'Live', label: 'stock updates on every sale' },
-      { text: 'Auto', label: 'itemised bill generation' },
-    ],
-    flowTitle: 'Transaction flow',
-    flow: [
-      { label: 'Cart', icon: 'Cart' },
-      { label: 'Price lookup', icon: 'Python' },
-      { label: 'MySQL txn', icon: 'MySQL' },
-      { label: 'Stock update', icon: 'Box' },
-      { label: 'Bill printed', icon: 'Receipt' },
-    ],
-    detail: [
-      'A Python and MySQL inventory and billing system with separate customer and manager modules. Managers maintain the catalogue, pricing and stock; customers build a cart and check out.',
-      'Every sale runs as a single transaction — stock is decremented in real time, low-stock items are flagged for reorder, and an itemised bill is generated automatically.',
-    ],
+    repo: 'https://github.com/mukesh4783',
   },
 ];
-
-/* { Python: 3, React: 1, ... } */
-export function projectCountByTech() {
-  return PROJECTS.reduce(
-    (acc, p) => p.stack.reduce((a, t) => ({ ...a, [t]: (a[t] ?? 0) + 1 }), acc),
-    {},
-  );
-}
-
-export const FILTER_TECHS = ['Python', 'LangChain', 'React', 'MongoDB', 'Docker', 'MySQL', 'Ollama'];
