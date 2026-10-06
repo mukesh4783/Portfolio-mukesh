@@ -2,7 +2,7 @@ import { motion } from 'motion/react';
 import { ArrowDown, ArrowUpRight } from '@phosphor-icons/react';
 import { profile } from '../../data/profile.js';
 import KineticName from './KineticName.jsx';
-import PreviewDeck from './PreviewDeck.jsx';
+import Portrait from './portrait/Portrait.jsx';
 import './hero.css';
 
 const rise = (delay) => ({
@@ -34,12 +34,12 @@ export default function Hero() {
         </div>
 
         <motion.div
-          className="hero__deck"
-          initial={{ opacity: 0, y: 40, rotate: 3 }}
-          animate={{ opacity: 1, y: 0, rotate: 0 }}
-          transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
+          className="hero__portrait"
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
         >
-          <PreviewDeck />
+          <Portrait />
           <motion.span
             className="hero__stamp mono"
             initial={{ scale: 1.8, opacity: 0, rotate: -24 }}

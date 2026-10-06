@@ -88,97 +88,18 @@
   margin-top: 32px;
 }
 
-/* Preview deck */
-.hero__deck {
+/* Portrait column */
+.hero__portrait {
   position: relative;
   justify-self: center;
   width: min(100%, 520px);
 }
 
-.deck__stack {
-  position: relative;
-  display: grid;
-  padding-top: 44px;
-}
-.print {
-  grid-area: 1 / 1;
-  display: block;
-  padding: 10px 10px 0;
-  border-radius: 6px;
-  background: var(--print);
-  box-shadow: 0 1px 0 var(--rule), 0 26px 50px -30px rgb(10 30 70 / 0.55);
-  transform-origin: 50% 80%;
-}
-.print__frame {
-  position: relative;
-  display: block;
-  aspect-ratio: 16 / 9.4;
-  overflow: hidden;
-  border-radius: 3px;
-  background: #0b0f14;
-}
-.print__frame img,
-.print__frame video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top left;
-}
-/* Prints under the top one are shown as cyanotypes: blue, not yet developed. */
-.print__tone {
-  position: absolute;
-  inset: 0;
-  background: var(--blue);
-  mix-blend-mode: color;
-  opacity: 0.9;
-  transition: opacity 0.6s var(--ease-out);
-}
-.print.is-top .print__tone {
-  opacity: 0;
-}
-.print__cap {
-  display: grid;
-  gap: 2px;
-  padding: 10px 4px 12px;
-  font-size: 0.86rem;
-  line-height: 1.35;
-  color: var(--ink-2);
-}
-.print__cap strong {
-  color: var(--ink);
-  font-family: var(--f-display);
-  font-weight: 800;
-  font-stretch: 75%;
-  font-size: 1.05rem;
-}
-
-.deck__bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 16px;
-  color: var(--ink-3);
-}
-.deck__next {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  height: 32px;
-  padding: 0 12px;
-  border-radius: var(--r-pill);
-  border: 1px solid var(--rule);
-  color: var(--ink);
-  transition: background-color 0.2s;
-}
-.deck__next:hover {
-  background: var(--paper-2);
-}
-
 /* A rubber stamp, double-ruled, inked in blueprint blue. */
 .hero__stamp {
   position: absolute;
-  right: -22px;
-  top: 6px;
+  right: -14px;
+  top: 2%;
   z-index: 12;
   padding: 8px 14px;
   border: 2px solid var(--blue);
@@ -201,9 +122,9 @@
   .hero__grid {
     grid-template-columns: minmax(0, 1fr);
   }
-  .hero__deck {
-    width: min(100% - 32px, 460px);
-    margin-top: 12px;
+  .hero__portrait {
+    width: min(100% - 32px, 440px);
+    margin: 12px 0 28px;
   }
   .hero__stamp {
     right: -4px;

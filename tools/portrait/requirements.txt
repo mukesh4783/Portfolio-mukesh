@@ -1,0 +1,6 @@
+# Portrait pipeline (tools/portrait). Installed into tools/portrait/.venv by run.sh.
+rembg[cpu]>=2.0.60,<3
+opencv-python-headless>=4.9,<5   # 5.x dropped the Haar face detector used for framing
+numpy>=1.26
+pillow>=10
+pytest>=8
