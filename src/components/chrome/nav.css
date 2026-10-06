@@ -1,0 +1,155 @@
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-nav);
+  transition: background-color 0.4s var(--ease-out), box-shadow 0.4s var(--ease-out);
+}
+.nav.is-raised {
+  background: color-mix(in oklab, var(--paper) 86%, transparent);
+  backdrop-filter: blur(12px) saturate(1.2);
+  -webkit-backdrop-filter: blur(12px) saturate(1.2);
+  box-shadow: 0 1px 0 var(--rule);
+}
+
+.nav__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  height: var(--nav-h);
+}
+
+.nav__mark {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* A blue print tile with a mint corner, folded like the page it came from. */
+.nav__badge {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: var(--blue);
+  color: var(--paper);
+  font-family: var(--f-display);
+  font-weight: 800;
+  font-stretch: 70%;
+  font-size: 1rem;
+  overflow: hidden;
+}
+.nav__badge::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 12px;
+  height: 12px;
+  background: linear-gradient(135deg, transparent 50%, var(--mint) 50%);
+  transition: width 0.4s var(--ease-out), height 0.4s var(--ease-out);
+}
+.nav__mark:hover .nav__badge::after {
+  width: 20px;
+  height: 20px;
+}
+.nav__name {
+  font-weight: 500;
+  font-size: 0.98rem;
+  white-space: nowrap;
+}
+.nav__name b {
+  font-weight: 700;
+}
+
+.nav__links {
+  display: flex;
+  gap: 4px;
+}
+.nav__link {
+  position: relative;
+  padding: 8px 14px;
+  border-radius: var(--r-pill);
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--ink-2);
+  transition: color 0.25s, background-color 0.25s;
+}
+.nav__link:hover {
+  color: var(--ink);
+  background: var(--paper-2);
+}
+
+.nav__tools {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.nav__icon {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--r-pill);
+  border: 1px solid var(--rule);
+  transition: background-color 0.25s, transform 0.2s;
+}
+.nav__icon:hover {
+  background: var(--paper-2);
+}
+.nav__icon:active {
+  transform: scale(0.94);
+}
+.nav__burger {
+  display: none;
+}
+
+.nav__progress {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 2px;
+  transform-origin: 0 50%;
+  background: linear-gradient(90deg, var(--blue), var(--mint));
+}
+
+.nav__sheet {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  display: grid;
+  padding: 12px var(--gutter) 28px;
+  background: var(--paper);
+  box-shadow: 0 1px 0 var(--rule), 0 24px 40px -24px rgb(0 0 0 / 0.25);
+}
+.nav__sheet a {
+  padding: 12px 0;
+  font-family: var(--f-display);
+  font-size: 1.9rem;
+  font-weight: 800;
+  font-stretch: 70%;
+  line-height: 1.1;
+}
+.nav__sheet a:hover,
+.nav__sheet-cv {
+  color: var(--blue-text);
+}
+
+@media (max-width: 900px) {
+  .nav__links {
+    display: none;
+  }
+  .nav__burger {
+    display: grid;
+  }
+}
+@media (max-width: 420px) {
+  .nav__cv,
+  .nav__name {
+    display: none;
+  }
+}

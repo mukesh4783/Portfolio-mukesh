@@ -1,0 +1,47 @@
+.ft {
+  padding-top: clamp(20px, 4vw, 48px);
+  border-top: 1.5px solid var(--ink);
+  overflow: hidden;
+}
+
+/* The closing word: outlined letters that ink in under the pointer. */
+.ft__word {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--f-display);
+  font-size: clamp(4.5rem, 19vw, 17rem);
+  line-height: 0.85;
+  letter-spacing: -0.02em;
+  user-select: none;
+  cursor: default;
+}
+.ft__ch {
+  display: inline-block;
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--blue);
+  font-variation-settings: 'wght' 300, 'wdth' 60;
+}
+
+.ft__bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 24px;
+  padding-block: 28px 36px;
+  color: var(--ink-2);
+  font-size: 0.9rem;
+}
+.ft__colophon {
+  color: var(--ink-3);
+}
+.ft__top {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  color: var(--ink);
+}
+.ft__top:hover {
+  color: var(--blue-text);
+}

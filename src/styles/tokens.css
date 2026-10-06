@@ -1,37 +1,92 @@
-/* Design tokens — pure white page, ink type, and a categorical palette
-   borrowed from good chart design: each colour means one thing. */
+/*
+  Cyanotype system.
+  Light: Prussian-blue ink on cool cyanotype paper, with a mint highlighter.
+  Dark (system setting or the nav toggle): a navy blueprint with pale linework.
+  --blue and --mint are inks for graphics and display type; the -text
+  variants are darker pulls that keep small copy at WCAG AA.
+
+  Shape rule: buttons, chips and filters are pills; cards and plates use --r.
+*/
 :root {
-  --paper: #ffffff;
-  --ink: #0f1115;
-  --ink-2: #474c56;
-  --ink-3: #8b909a;
-  --rule: #e6e7ea;
-  --grid: #f0f1f3;
-  --wash: #f7f7f8;
+  --paper: #eef3f2;
+  --paper-2: #e2eaea;
+  --paper-3: #d2dddd;
+  --ink: #0d1b2a;
+  --ink-2: #3c4b5a;
+  --ink-3: #5a6876;
+  --rule: rgb(13 27 42 / 0.14);
+  --grid: rgb(31 79 160 / 0.07);
 
-  --blue: #2146ff;
-  --red: #ff5b2e;
-  --green: #00a37a;
-  --yellow: #ffbe1a;
-  --pink: #ff6fb1;
+  --blue: #1f4fa0;
+  --blue-text: #1a438a;
+  --mint: #2fd3a5;
+  --mint-text: #08704f;
+  --over: #0e7f86;
+  --flood: #1f4fa0;
+  --on-flood: #eef3f2;
+  --print: #fbfdfd;
 
-  --blue-soft: #e9edff;
-  --red-soft: #fff0eb;
-  --green-soft: #e3f6f0;
-  --yellow-soft: #fff6dc;
+  --f-display: 'Anybody Variable', 'Arial Narrow', system-ui, sans-serif;
+  --f-body: 'Archivo Variable', system-ui, sans-serif;
+  --f-mono: 'Spline Sans Mono Variable', ui-monospace, 'SFMono-Regular', Menlo, monospace;
 
-  --font-sans: 'Familjen Grotesk', ui-sans-serif, system-ui, sans-serif;
-  --font-mono: 'Martian Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
-  --font-hand: 'Nanum Pen Script', 'Comic Sans MS', cursive;
+  --r: 14px;
+  --r-pill: 999px;
 
-  --radius: 18px;
-  --radius-sm: 10px;
-  --gutter: clamp(16px, 4vw, 48px);
-  --max: 1240px;
-  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-ink: cubic-bezier(0.65, 0, 0.35, 1);
+
+  --gutter: clamp(16px, 4vw, 56px);
+  --max: 1320px;
+  --nav-h: 68px;
+
+  /* z-index scale */
+  --z-grid: -1;
+  --z-nav: 40;
+  --z-float: 50;
+  --z-modal: 80;
+
+  color-scheme: light;
 }
 
-[data-c='blue'] { --c: var(--blue); --c-soft: var(--blue-soft); }
-[data-c='red'] { --c: var(--red); --c-soft: var(--red-soft); }
-[data-c='green'] { --c: var(--green); --c-soft: var(--green-soft); }
-[data-c='yellow'] { --c: var(--yellow); --c-soft: var(--yellow-soft); }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --paper: #0b1a30;
+    --paper-2: #10233f;
+    --paper-3: #17304f;
+    --ink: #e6eef7;
+    --ink-2: #b2c0d2;
+    --ink-3: #8b9cb1;
+    --rule: rgb(230 238 247 / 0.14);
+    --grid: rgb(111 168 255 / 0.08);
+    --blue: #6fa8ff;
+    --blue-text: #93c0ff;
+    --mint: #3ee6b5;
+    --mint-text: #62f0c6;
+    --over: #8fe3e6;
+    --flood: #173f7c;
+    --on-flood: #eaf2fb;
+    --print: #13294a;
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme='dark'] {
+  --paper: #0b1a30;
+  --paper-2: #10233f;
+  --paper-3: #17304f;
+  --ink: #e6eef7;
+  --ink-2: #b2c0d2;
+  --ink-3: #8b9cb1;
+  --rule: rgb(230 238 247 / 0.14);
+  --grid: rgb(111 168 255 / 0.08);
+  --blue: #6fa8ff;
+  --blue-text: #93c0ff;
+  --mint: #3ee6b5;
+  --mint-text: #62f0c6;
+  --over: #8fe3e6;
+  --flood: #173f7c;
+  --on-flood: #eaf2fb;
+  --print: #13294a;
+  color-scheme: dark;
+}

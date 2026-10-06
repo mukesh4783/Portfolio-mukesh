@@ -1,0 +1,239 @@
+.rec {
+  padding: clamp(60px, 9vw, 130px) 0;
+  background: var(--paper-2);
+}
+
+.rec__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: clamp(32px, 6vw, 96px);
+  align-items: start;
+}
+
+/* Education: report cards with the grade as the headline */
+.edu {
+  display: grid;
+  gap: 14px;
+  margin-top: 36px;
+}
+.edu__card {
+  display: grid;
+  grid-template-columns: 132px 1fr;
+  gap: 20px;
+  align-items: center;
+  padding: 18px 22px;
+  border-radius: var(--r);
+  background: var(--paper);
+  box-shadow: 0 1px 0 var(--rule), 0 14px 30px -24px rgb(10 30 70 / 0.5);
+}
+.edu__card:first-child {
+  box-shadow: 6px 6px 0 var(--mint), 0 0 0 1.5px var(--blue);
+}
+.edu__score {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+.edu__num {
+  font-family: var(--f-display);
+  font-weight: 800;
+  font-stretch: 68%;
+  font-size: 3.3rem;
+  line-height: 1;
+  color: var(--blue-text);
+  font-variant-numeric: tabular-nums;
+}
+.edu__unit {
+  color: var(--ink-3);
+}
+.edu__school {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+.edu__what {
+  color: var(--ink-2);
+}
+.edu__when {
+  margin-top: 6px;
+  color: var(--ink-3);
+}
+
+/* Training, framed like a drawing's title block */
+.train {
+  margin-top: 28px;
+  padding: 22px;
+  border-radius: var(--r);
+  border: 1.5px solid var(--blue);
+  background:
+    linear-gradient(var(--grid) 1px, transparent 1px) 0 0 / 16px 16px,
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px) 0 0 / 16px 16px,
+    var(--paper);
+}
+.train__tag {
+  display: inline-block;
+  margin-bottom: 10px;
+  padding: 2px 8px;
+  border-radius: var(--r-pill);
+  background: var(--blue);
+  color: var(--paper);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.68rem;
+}
+.train__title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1.25;
+}
+.train__when {
+  margin-top: 4px;
+  color: var(--ink-3);
+}
+.train__lines {
+  display: grid;
+  gap: 6px;
+  margin-top: 14px;
+  color: var(--ink-2);
+}
+.train__lines li {
+  position: relative;
+  padding-left: 18px;
+}
+.train__lines li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 9px;
+  height: 2px;
+  background: var(--mint-text);
+}
+.train__link {
+  margin-top: 16px;
+}
+
+/* Commit log */
+.cl {
+  position: sticky;
+  top: 96px;
+  border-radius: var(--r);
+  background: var(--print);
+  box-shadow: 0 1px 0 var(--rule), 0 30px 60px -36px rgb(10 30 70 / 0.5);
+  overflow: hidden;
+}
+.cl__head {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 16px;
+  background: var(--ink);
+  color: var(--paper);
+}
+.cl__head strong {
+  color: var(--mint);
+  font-weight: 600;
+}
+.cl__body {
+  position: relative;
+  padding: 10px 16px 14px;
+}
+.cl__branch {
+  position: absolute;
+  left: 25px;
+  top: 22px;
+  bottom: 24px;
+  width: 2px;
+  background: linear-gradient(var(--blue), var(--mint));
+  transform-origin: 50% 0;
+}
+.cl__list {
+  display: grid;
+}
+.cl__commit {
+  position: relative;
+  display: grid;
+  grid-template-columns: 20px 62px minmax(0, 1fr);
+  grid-template-areas:
+    'node hash msg'
+    'node hash meta';
+  column-gap: 10px;
+  padding: 9px 0;
+  border-bottom: 1px dashed var(--rule);
+}
+.cl__commit:last-child {
+  border-bottom: 0;
+}
+.cl__node {
+  grid-area: node;
+  position: relative;
+  z-index: 1;
+  width: 12px;
+  height: 12px;
+  margin: 5px 0 0 3px;
+  border-radius: 50%;
+  border: 2.5px solid var(--c);
+  background: var(--print);
+}
+.cl__commit.is-ship {
+  --c: var(--blue);
+}
+.cl__commit.is-learn {
+  --c: var(--over);
+}
+.cl__commit.is-win {
+  --c: var(--mint-text);
+}
+.cl__commit.is-edu {
+  --c: var(--ink-3);
+}
+.cl__commit.is-ship .cl__node,
+.cl__commit.is-win .cl__node {
+  background: var(--c);
+}
+.cl__hash {
+  grid-area: hash;
+  padding-top: 2px;
+  color: var(--blue-text);
+}
+.cl__msg {
+  grid-area: msg;
+  font-weight: 600;
+  font-size: 0.95rem;
+  line-height: 1.35;
+}
+.cl__meta {
+  grid-area: meta;
+  display: flex;
+  gap: 10px;
+  color: var(--ink-3);
+}
+.cl__type {
+  color: var(--c);
+}
+
+@media (max-width: 900px) {
+  .rec__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .cl {
+    position: relative;
+    top: 0;
+  }
+}
+@media (max-width: 480px) {
+  .edu__card {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .cl__commit {
+    grid-template-columns: 20px minmax(0, 1fr);
+    grid-template-areas:
+      'node msg'
+      'node meta';
+  }
+  .cl__hash {
+    display: none;
+  }
+}

@@ -48,3 +48,10 @@ export function stepQueue(state, dt, rand) {
 
 export const countByStage = (tokens) =>
   STAGES.map((_, s) => tokens.filter((t) => t.stage === s).length);
+
+/* A citizen files a request by hand: one new token of `kind` at stage 0. */
+export function raiseRequest(state, kind, rand) {
+  if (!KINDS.includes(kind) || state.tokens.length >= MAX_TOKENS) return state;
+  const token = { id: state.nextId, kind, stage: 0, age: 0, remaining: serviceTime(0, rand) };
+  return { ...state, tokens: [...state.tokens, token], nextId: state.nextId + 1 };
+}

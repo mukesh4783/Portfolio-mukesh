@@ -1,0 +1,40 @@
+/* A mint measuring tape with printed ticks along both edges. */
+.tape {
+  position: relative;
+  overflow: hidden;
+  margin: 0 -2vw;
+  padding: 18px 0;
+  background:
+    repeating-linear-gradient(90deg, rgb(13 27 42 / 0.55) 0 1px, transparent 1px 10px) 0 0 / 100% 7px no-repeat,
+    repeating-linear-gradient(90deg, rgb(13 27 42 / 0.55) 0 1px, transparent 1px 50px) 0 0 / 100% 13px no-repeat,
+    repeating-linear-gradient(90deg, rgb(13 27 42 / 0.55) 0 1px, transparent 1px 10px) 0 100% / 100% 7px no-repeat,
+    var(--mint);
+  color: #0d1b2a;
+  transform: rotate(1.2deg);
+  box-shadow: 0 -6px 0 var(--blue);
+}
+
+.tape__track {
+  display: flex;
+  width: max-content;
+}
+
+.tape__item {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 0 26px;
+  font-family: var(--f-display);
+  font-weight: 800;
+  font-stretch: 75%;
+  font-size: 1.25rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.tape__cm {
+  font-family: var(--f-mono);
+  font-weight: 500;
+  font-size: 0.66rem;
+  opacity: 0.7;
+}

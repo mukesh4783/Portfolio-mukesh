@@ -1,34 +1,33 @@
-# Mukesh Kumar Pandey — Portfolio
+# Mukesh Kumar Pandey, portfolio
 
-React + Vite. No UI or chart libraries: every figure is hand-written SVG driven by small, tested math modules.
+A "cyanotype" portfolio: Prussian-blue ink and a mint highlighter on cool paper in light mode, a navy blueprint in dark mode. Every featured project comes with a working demo or real output from the project itself.
 
 ```bash
 npm install
 npm run dev      # http://localhost:5173
-npm test         # unit tests for the math behind the figures
-npm run build    # static site in dist/
+npm test         # logic tests (retrieval, request queue, stock, contact validation, kinetic type)
+npm run build
 ```
 
-## Editing content
+## Where things live
 
-All content lives in `src/data/`:
-
-| File | What's in it |
+| What | File |
 | --- | --- |
-| `profile.js` | Name, status line, email, links, the `describe()` summary numbers, About text |
-| `projects.js` | The four projects — copy, metrics, stack, repo links (currently point to the GitHub profile; swap in exact repo URLs) |
-| `skills.js` | Toolbox groups and methods |
-| `timeline.js` | Swimlane events (dates as fractional years, e.g. `2026.52` ≈ Jul 2026) and training notes |
+| Name, links, stats, tape words | `src/data/profile.js` |
+| Projects and their copy | `src/data/projects.js` |
+| Toolkit tiles (exposure = depth of use) | `src/data/skills.js` |
+| Education, training, commit log | `src/data/record.js` |
+| Certificates | `src/data/credentials.js` |
+| Colours, fonts, radii | `src/styles/tokens.css` |
+| Real project media (videos, screenshots) | `public/media/` |
 
-## How the figures work
+## Media
 
-| Figure | Component | Logic (tested) |
-| --- | --- | --- |
-| Hero regression playground | `components/hero/FitPlayground.jsx` | `lib/regression.js` — polynomial least squares + 95% CI band |
-| WebRAG retrieval | `components/work/viz/RetrievalViz.jsx` | `lib/retrieval.js` — top-k + grounding threshold |
-| GramSetu request flow | `components/work/viz/FlowViz.jsx` | `lib/queue.js` — staged queue simulation |
-| Manimax morph | `components/work/viz/MorphViz.jsx` | `lib/curves.js` — sampled curve interpolation |
-| Inventory stock + bill | `components/work/viz/StockViz.jsx` | `lib/inventory.js` — stock / reorder simulation |
-| Timeline swimlanes | `components/record/Timeline.jsx` | `lib/timeline.js` — overlap stacking |
+- `manimax-*.mp4`: 15 s muted loops cut from real Manimax renders. `*-full.mp4` are the full narrated renders shown in the modal.
+- `rag-*.jpg`: screenshots of the running WebRAG app (index, answer, refusal, diff), cropped from the repo's `ragPhoto/`.
+- `meme-cat.jpg`: the image the Meme Error extension shows.
 
-Animations pause when off-screen and respect `prefers-reduced-motion`.
+## Notes
+
+- The contact form posts to FormSubmit (`formsubmit.co/ajax/<email>`). The first submission sends a one-time confirmation email to that inbox.
+- All motion respects `prefers-reduced-motion`. Looping demos and videos pause off-screen.

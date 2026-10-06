@@ -1,0 +1,61 @@
+.dr {
+  position: relative;
+  display: grid;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0;
+  font-family: var(--f-display);
+  font-weight: 800;
+  font-stretch: 72%;
+  font-size: clamp(2.6rem, 6.4vw, 5.6rem);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  isolation: isolate;
+}
+
+.dr__layer {
+  grid-area: 1 / 1;
+  display: block;
+  padding-bottom: 0.08em;
+}
+
+/* The drafted outline, left as a hairline echo offset down and right. */
+.dr__line {
+  color: transparent;
+  -webkit-text-stroke: 1px var(--blue);
+  transform: translate(0.035em, 0.035em);
+}
+
+.dr__fill {
+  color: var(--blue);
+}
+:root[data-theme='dark'] .dr__fill {
+  color: var(--ink);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) .dr__fill {
+    color: var(--ink);
+  }
+}
+
+.dr__mark {
+  position: absolute;
+  z-index: -1;
+  left: -0.08em;
+  right: -0.12em;
+  bottom: 0.16em;
+  height: 0.3em;
+  border-radius: 2px;
+  background: var(--mint);
+  opacity: 0.85;
+  transform-origin: 0 50%;
+  rotate: -0.6deg;
+}
+:root[data-theme='dark'] .dr__mark {
+  opacity: 0.4;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) .dr__mark {
+    opacity: 0.4;
+  }
+}

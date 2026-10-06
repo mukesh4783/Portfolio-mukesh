@@ -1,0 +1,78 @@
+.stats {
+  padding: clamp(56px, 9vw, 120px) 0 0;
+}
+
+/* A Prussian-blue flood ruled like a blueprint sheet. */
+.stats__flood {
+  position: relative;
+  background:
+    linear-gradient(rgb(255 255 255 / 0.07) 1px, transparent 1px) 0 0 / 24px 24px,
+    linear-gradient(90deg, rgb(255 255 255 / 0.07) 1px, transparent 1px) 0 0 / 24px 24px,
+    linear-gradient(rgb(255 255 255 / 0.12) 1px, transparent 1px) 0 0 / 120px 120px,
+    linear-gradient(90deg, rgb(255 255 255 / 0.12) 1px, transparent 1px) 0 0 / 120px 120px,
+    var(--flood);
+  color: var(--on-flood);
+}
+
+.stats__row {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  padding-block: clamp(44px, 6vw, 80px);
+}
+
+.stat {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 0 clamp(12px, 2vw, 28px);
+  border-left: 1.5px solid rgb(255 255 255 / 0.3);
+}
+.stat:first-child {
+  border-left: 0;
+  padding-left: 0;
+}
+
+/* Dimension line: a mint rule with end ticks, drawn above each figure. */
+.stat__dim {
+  display: block;
+  width: 72%;
+  height: 9px;
+  margin-bottom: 10px;
+  border-inline: 1.5px solid var(--mint);
+  background: linear-gradient(var(--mint), var(--mint)) 0 50% / 100% 1.5px no-repeat;
+  transform-origin: 0 50%;
+}
+
+.stat__num {
+  font-family: var(--f-display);
+  font-weight: 800;
+  font-stretch: 70%;
+  font-size: clamp(2.8rem, 5.6vw, 5rem);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+.stat__affix {
+  font-size: 0.5em;
+  vertical-align: 0.6em;
+  margin: 0 0.05em;
+}
+.stat__label {
+  font-weight: 600;
+  font-size: 1.02rem;
+}
+.stat__note {
+  opacity: 0.8;
+}
+
+@media (max-width: 820px) {
+  .stats__row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: 40px;
+  }
+  .stat:nth-child(3) {
+    border-left: 0;
+    padding-left: 0;
+  }
+}

@@ -1,0 +1,257 @@
+.tk {
+  padding: clamp(60px, 9vw, 130px) 0;
+}
+
+.tk__head {
+  display: grid;
+  gap: 18px;
+  margin-bottom: clamp(28px, 4vw, 44px);
+}
+.tk__intro {
+  max-width: 50ch;
+  color: var(--ink-2);
+  font-size: 1.1rem;
+}
+.tk__bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px 24px;
+}
+
+.tk__filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  padding: 4px;
+  border-radius: var(--r-pill);
+  background: var(--paper-2);
+  box-shadow: inset 0 0 0 1px var(--rule);
+}
+.tk__filter {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 38px;
+  padding: 0 14px;
+  border-radius: var(--r-pill);
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--ink-2);
+  isolation: isolate;
+  transition: color 0.25s;
+}
+.tk__filter:hover {
+  color: var(--ink);
+}
+.tk__filter[aria-pressed='true'] {
+  color: var(--paper);
+}
+.tk__pill {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: var(--r-pill);
+  background: var(--ink);
+}
+.tk__count {
+  display: grid;
+  place-items: center;
+  min-width: 22px;
+  height: 20px;
+  padding: 0 6px;
+  border-radius: var(--r-pill);
+  background: color-mix(in oklab, currentColor 14%, transparent);
+  font-size: 0.7rem;
+}
+
+.tk__legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 16px;
+  color: var(--ink-2);
+}
+.tk__legend li {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.tk__legend i {
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  box-shadow: inset 0 0 0 1px var(--rule);
+}
+
+/* The sheet: tiles of mixed size, packed densely. */
+.tk__sheet {
+  display: grid;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  grid-auto-rows: 116px;
+  grid-auto-flow: dense;
+  gap: 10px;
+}
+
+/* Exposure levels: pale, mid, fully developed Prussian blue. */
+.d1 {
+  --bg: color-mix(in oklab, var(--blue) 9%, var(--paper));
+  --fg: var(--ink);
+  --wm: color-mix(in oklab, var(--blue) 22%, transparent);
+}
+.d2 {
+  --bg: color-mix(in oklab, var(--blue) 26%, var(--paper));
+  --fg: var(--ink);
+  --wm: color-mix(in oklab, var(--paper) 55%, transparent);
+}
+.d3 {
+  --bg: var(--flood);
+  --fg: var(--on-flood);
+  --wm: rgb(255 255 255 / 0.16);
+}
+/* On the blueprint, the fully developed tiles need a brighter pull to stand apart. */
+:root[data-theme='dark'] .d3 {
+  --bg: color-mix(in oklab, var(--blue) 46%, var(--paper));
+  --fg: #f4f8fd;
+}
+:root[data-theme='dark'] .d2 {
+  --bg: color-mix(in oklab, var(--blue) 18%, var(--paper));
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) .d3 {
+    --bg: color-mix(in oklab, var(--blue) 46%, var(--paper));
+    --fg: #f4f8fd;
+  }
+  :root:not([data-theme='light']) .d2 {
+    --bg: color-mix(in oklab, var(--blue) 18%, var(--paper));
+  }
+}
+.tk__legend i.d1,
+.tk__legend i.d2,
+.tk__legend i.d3 {
+  background: var(--bg);
+}
+
+.tk__cell {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 14px;
+  border-radius: 10px;
+  background: var(--bg);
+  color: var(--fg);
+  overflow: hidden;
+  isolation: isolate;
+  outline: none;
+  transition: transform 0.4s var(--ease-out), box-shadow 0.4s var(--ease-out), opacity 0.4s;
+}
+.tk__cell--xl {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+.tk__cell--w {
+  grid-column: span 2;
+}
+.tk__cell--t {
+  grid-row: span 2;
+}
+.tk__cell:hover,
+.tk__cell:focus-visible {
+  transform: translate(-3px, -4px);
+  box-shadow: 5px 6px 0 var(--mint);
+}
+.tk__cell.is-dim {
+  opacity: 0.25;
+}
+
+.tk__wm {
+  position: absolute;
+  right: -4%;
+  bottom: -10%;
+  z-index: -1;
+  display: flex;
+  align-items: flex-end;
+  height: 76%;
+  color: var(--wm);
+  transform: rotate(-10deg);
+  transform-origin: 100% 100%;
+  transition: transform 0.6s var(--ease-out), color 0.4s;
+  pointer-events: none;
+}
+.tk__cell--xl .tk__wm {
+  height: 66%;
+}
+.tk__cell--t .tk__wm {
+  height: 40%;
+}
+.tk__logo {
+  height: 100%;
+  width: auto;
+  aspect-ratio: 1;
+}
+.tk__wm--2 .tk__logo {
+  height: 80%;
+}
+.tk__wm--2 .tk__logo + .tk__logo {
+  margin-left: -16%;
+  transform: translateY(-22%);
+}
+.tk__cell:hover .tk__wm,
+.tk__cell:focus-visible .tk__wm {
+  transform: rotate(-3deg) scale(1.06);
+  color: color-mix(in oklab, var(--mint) 60%, transparent);
+}
+
+.tk__top {
+  display: grid;
+  gap: 2px;
+}
+.tk__name {
+  font-family: var(--f-display);
+  font-weight: 800;
+  font-stretch: 74%;
+  font-size: 1.18rem;
+  line-height: 1.05;
+}
+.tk__cell--xl .tk__name {
+  font-size: clamp(2.6rem, 5vw, 4rem);
+  font-stretch: 66%;
+  line-height: 0.95;
+}
+.tk__note {
+  opacity: 0.8;
+}
+.tk__used {
+  align-self: flex-start;
+  padding: 2px 8px;
+  border-radius: var(--r-pill);
+  background: color-mix(in oklab, var(--paper) 88%, transparent);
+  color: var(--ink);
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.3s, transform 0.3s var(--ease-out);
+}
+.tk__cell:hover .tk__used,
+.tk__cell:focus-visible .tk__used,
+.tk__cell--xl .tk__used {
+  opacity: 1;
+  transform: none;
+}
+
+@media (max-width: 1000px) {
+  .tk__sheet {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+@media (max-width: 560px) {
+  .tk__sheet {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: 104px;
+  }
+  .tk__used {
+    opacity: 1;
+    transform: none;
+  }
+}

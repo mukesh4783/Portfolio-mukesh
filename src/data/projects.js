@@ -1,97 +1,107 @@
-/* Projects — the single source for the Work section and the skills matrix.
-   `viz` picks the interactive figure rendered beside each project. */
-
-export const PROJECTS = [
+// Project copy comes from the CV and each repo's README.
+// `demo` names the working plate; `proof` names the real-media preview.
+export const featured = Object.freeze([
   {
     id: 'webrag',
     name: 'WebRAG',
-    kicker: 'Retrieval-augmented generation',
+    kicker: 'Grounded Q&A bot',
     date: 'Jul 2026',
-    color: 'blue',
-    viz: 'retrieval',
-    title: 'A Q&A bot that only answers from the page you give it.',
+    demo: 'retrieval',
+    proof: 'rag',
     summary:
-      'Paste a URL, ask a question. WebRAG retrieves the relevant chunks of that live page and answers strictly from them — and when the answer isn’t there, it says so instead of guessing.',
-    how: [
-      'LangChain WebBaseLoader → RecursiveCharacterTextSplitter (1000-char chunks, 200 overlap)',
-      'OpenAI text-embedding-3-small vectors in a local Chroma store; GPT-4o-mini answers from retrieved context only',
-      'SHA-256 hash per source detects page changes; Streamlit UI shows a diff-based freshness report',
+      'Paste a URL and ask a question. WebRAG answers only from that live page, and when the answer is not there it says so instead of guessing.',
+    points: [
+      'LangChain loader and splitter, nomic-embed-text vectors in a local Chroma store, Gemma 4 through Ollama.',
+      'SHA-256 hash per page catches edits, prints a unified-diff freshness report and re-indexes on its own.',
+      'Runs fully local, so no page content leaves the machine.',
     ],
     metrics: [
-      { value: '≈0%', label: 'hallucinated answers on out-of-scope questions' },
-      { value: '+30%', label: 'retrieval relevance' },
-      { value: '−40%', label: 'per-query latency vs cloud vector DBs' },
+      { k: '~0%', v: 'out-of-scope hallucinations' },
+      { k: '+30%', v: 'retrieval relevance' },
+      { k: 'Auto', v: 're-index on page change' },
     ],
-    stack: ['Python', 'LangChain', 'Chroma', 'OpenAI', 'Streamlit'],
-    repo: 'https://github.com/mukesh4783',
-  },
-  {
-    id: 'gramsetu',
-    name: 'GramSetu',
-    kicker: 'Full-stack · Analytics',
-    date: 'Jul 2026',
-    color: 'green',
-    viz: 'flow',
-    title: 'Village administration, online — every request trackable.',
-    summary:
-      'A digital governance portal where citizens raise service requests, apply for welfare schemes and request certificates, then watch each one move. Admins get an analytics dashboard that shows where things are stuck.',
-    how: [
-      'React front end, Node.js + Express API, MongoDB Atlas, JWT role-based auth',
-      'Chart.js admin dashboard for backlogs and turnaround',
-      'Multilingual Google Gemini chatbot answers in the citizen’s own language; deployed on Vercel',
-    ],
-    metrics: [
-      { value: '10+', label: 'citizen workflows digitised' },
-      { value: '+45%', label: 'request-processing visibility' },
-      { value: '500+', label: 'concurrent sessions at 99% uptime' },
-    ],
-    stack: ['React', 'Node.js', 'Express', 'MongoDB', 'Chart.js', 'Gemini', 'Vercel'],
-    repo: 'https://github.com/mukesh4783',
+    stack: ['Python', 'LangChain', 'Ollama', 'Chroma', 'Streamlit'],
+    github: 'https://github.com/mukesh4783/webRAG',
+    preview: { type: 'image', src: '/media/rag-answer.jpg' },
   },
   {
     id: 'manimax',
     name: 'Manimax',
-    kicker: 'Generative AI pipeline',
+    kicker: 'Topic to narrated maths video',
     date: 'Apr 2026',
-    color: 'red',
-    viz: 'morph',
-    title: 'Type a concept. Get a rendered maths explainer video.',
+    demo: 'manim',
     summary:
-      'A prompt-to-video pipeline: a local LLM plans the lesson, writes the Manim animation code and the narration, and the renderer turns it into a finished video — no paid APIs involved.',
-    how: [
-      'Local LLMs generate Manim scripts for equations, graphs and transforms',
-      'Narration text generated and synchronised with the animation',
-      'Renderer and model containerised with Docker for a zero-dependency setup',
+      'Type a topic and get a narrated Manim lesson. DeepSeek plans it, Qwen3-Coder writes the animation code, validators catch render errors, and the renderer does the rest.',
+    points: [
+      'DeepSeek code review, stage validators and deterministic fixes for known Manim render errors.',
+      'Per-chapter regeneration from feedback, with synced notes.',
+      'Narration in 8 languages with edge-tts, packaged with Docker and FFmpeg.',
     ],
     metrics: [
-      { value: '−70%', label: 'manual animation scripting time' },
-      { value: '−60%', label: 'inference cost per video' },
-      { value: '−50%', label: 'environment setup time' },
+      { k: '-70%', v: 'scripting time' },
+      { k: '8', v: 'narration languages' },
+      { k: 'Top 15', v: 'Resurgence Hackathon' },
     ],
-    stack: ['Python', 'Manim', 'Ollama', 'Docker'],
-    repo: 'https://github.com/mukesh4783',
+    stack: ['Python', 'Manim', 'Ollama', 'Node.js', 'Docker', 'FFmpeg'],
+    github: 'https://github.com/pxkuma/manimax',
+    preview: { type: 'video', src: '/media/manimax-pythagoras.mp4', poster: '/media/manimax-pythagoras.jpg' },
   },
+  {
+    id: 'gramsetu',
+    name: 'GramSetu',
+    kicker: 'Digital village portal',
+    date: 'Jul 2026',
+    demo: 'pipeline',
+    summary:
+      'Citizens raise service requests, apply for schemes and request certificates, then track every one. Admins see where requests are stuck.',
+    points: [
+      'React front end, Node.js and Express API, MongoDB Atlas, JWT role-based auth.',
+      'Chart.js admin dashboard that lifted request-processing visibility by about 45%.',
+      'Multilingual Gemini 2.5 Flash chatbot, deployed on Vercel.',
+    ],
+    metrics: [
+      { k: '10+', v: 'citizen workflows' },
+      { k: '~45%', v: 'more visibility' },
+      { k: '500+', v: 'sessions, 99% uptime' },
+    ],
+    stack: ['React', 'Node.js', 'Express', 'MongoDB', 'Gemini', 'Vercel'],
+    github: 'https://github.com/mukesh4783/Digital_Village_Management_Portal',
+    live: 'https://gramsetu-portal.vercel.app',
+    preview: { type: 'demo' },
+  },
+]);
+
+export const more = Object.freeze([
   {
     id: 'billing',
     name: 'Inventory & Billing',
-    kicker: 'Data systems',
-    date: 'Jun – Jul 2025',
-    color: 'yellow',
-    viz: 'stock',
-    title: 'Stock and invoices that stay in sync on every sale.',
+    kicker: 'Paid client project',
+    date: 'Jun - Jul 2025',
+    demo: 'stock',
     summary:
-      'A Python + MySQL inventory and billing system with separate customer and manager modules. Managers run the catalogue, pricing and stock; customers check out and get an itemised bill automatically.',
-    how: [
-      'Manager module: product catalogue, pricing, stock levels',
-      'Customer module: cart and checkout',
-      'Real-time stock updates and automated bill generation backed by MySQL',
-    ],
-    metrics: [
-      { value: '2', label: 'role-based modules — customer & manager' },
-      { value: 'Live', label: 'stock updates on every sale' },
-      { value: 'Auto', label: 'itemised bill generation' },
-    ],
+      'Python and MySQL system with customer and manager modules: stock that updates on every sale, and bills that write themselves.',
     stack: ['Python', 'MySQL'],
-    repo: 'https://github.com/mukesh4783',
   },
-];
+  {
+    id: 'meme',
+    name: 'Meme Error',
+    kicker: 'VS Code extension',
+    date: 'Jul 2026',
+    demo: 'meme',
+    summary:
+      'Watches the terminal, failed tasks and diagnostics. When something breaks, a meme pops up in the sidebar. A 3-second cooldown keeps it funny.',
+    stack: ['TypeScript', 'VS Code API'],
+    github: 'https://github.com/mukesh4783/cat-meme-error-popup',
+  },
+  {
+    id: 'ncrb',
+    name: 'NCRB Data EDA',
+    kicker: 'Public-health dashboard',
+    date: 'Apr 2026',
+    demo: 'waffle',
+    summary:
+      'Interactive Panel dashboard over ~18k NCRB rows (2018 to 2022): state, gender, cause and socio-economic breakdowns with year and category filters.',
+    stack: ['Pandas', 'Panel', 'hvPlot', 'Matplotlib'],
+    github: 'https://github.com/mukesh4783/Suicide-Analysis-in-India-2018---2022-using-Python',
+  },
+]);

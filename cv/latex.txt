@@ -1,0 +1,173 @@
+\documentclass[10pt,a4paper]{extarticle}
+
+% ---------- PACKAGES ----------
+\usepackage[top=0.35in,bottom=0.35in,left=0.5in,right=0.5in]{geometry}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{tabularx}
+\usepackage{array}
+
+% ---------- FONT (Arial / Word-style) ----------
+\usepackage[T1]{fontenc}
+\usepackage{helvet}                 % Helvetica = metric-compatible substitute for Arial
+\renewcommand{\familydefault}{\sfdefault}
+
+% ---------- COLORS ----------
+\definecolor{headingcolor}{RGB}{47,54,153}   % deep indigo/blue used for headings & links
+\definecolor{rulecolor}{RGB}{47,54,153}
+
+% ---------- HYPERLINK SETUP ----------
+\hypersetup{
+    colorlinks=true,
+    urlcolor=headingcolor,
+    linkcolor=headingcolor
+}
+
+% ---------- REMOVE PAGE NUMBERS ----------
+\pagestyle{empty}
+
+% ---------- SECTION FORMATTING ----------
+\titleformat{\section}
+  {\large\bfseries\color{headingcolor}}
+  {}{0em}{}
+\titlespacing{\section}{0pt}{12pt}{1pt}
+
+% Section heading followed by a colored rule
+\newcommand{\cvsection}[1]{%
+  \section*{#1}%
+  \vspace{-8pt}%
+  \noindent\textcolor{rulecolor}{\rule{\linewidth}{0.8pt}}\par%
+  \vspace{2pt}%
+}
+
+% ---------- CUSTOM COMMANDS ----------
+\newcommand{\name}[1]{{\Huge\bfseries\color{headingcolor} #1}}
+\newcommand{\role}[1]{{\large\bfseries\color{headingcolor} #1}}
+
+% Entry with title (left) and date (right)
+\newcommand{\entry}[2]{%
+  \noindent\textbf{\color{headingcolor}#1} \hfill \textit{#2}\par
+}
+
+% List environment for bullet points
+\newenvironment{tightitemize}{
+  \begin{itemize}[leftmargin=1.15em, itemsep=2.5pt, topsep=2.5pt, parsep=0pt, partopsep=0pt]
+}{
+  \end{itemize}
+}
+
+% Bullet whose text wraps inside its own column, so it never runs into the date
+\newcommand{\dateditem}[2]{%
+  \item \begin{tabularx}{\linewidth}[t]{@{}X@{\hspace{1em}}r@{}}#1 & \textit{#2}\end{tabularx}%
+}
+
+% Skills table: labels in one aligned column, values in a second aligned column
+\newcolumntype{L}{>{\bfseries\color{headingcolor}}l}
+
+\setlength{\parindent}{0pt}
+
+\begin{document}
+\fontsize{10.3pt}{12.4pt}\selectfont   % body size tuned so the CV fills exactly one page
+
+% ---------- HEADER ----------
+\name{Mukesh Kumar Pandey}\\[1pt]
+
+\begin{tabularx}{\textwidth}{@{}X X@{}}
+LinkedIn: \href{http://www.linkedin.com/in/mukesh4783/}{\textcolor{black}{linkedin.com/in/mukesh4783/}} &
+\hfill Email: \href{mailto:mukeshkumarpandey82@gmail.com}{\textcolor{black}{mukeshkumarpandey82@gmail.com}} \\
+GitHub: \href{https://github.com/mukesh4783}{\textcolor{black}{github.com/mukesh4783}} &
+\hfill Mobile: +91-84240 76924 \\
+\end{tabularx}
+
+% ---------- SKILLS ----------
+\cvsection{Skills}
+{\renewcommand{\arraystretch}{1.05}%
+\begin{tabularx}{\textwidth}{@{}L@{\hspace{1em}}X@{}}
+Languages:           & Python, C/C++, Java \\
+Tools \& Frameworks: & GitHub, PowerBI, FastAPI, Flask, Streamlit, Scikit-learn, Matplotlib, Seaborn, SciPy, Manim \\
+AI \& LLMs:          & LangChain, Ollama, ChromaDB, RAG, Prompt Engineering, LoRA/QLoRA Fine-tuning \\
+Databases:           & MySQL, PostgreSQL \\
+Soft Skills:         & Problem-Solving, Time Management, Multitasking, Self-Learning \\
+\end{tabularx}}
+
+% % ---------- TRAINING / EXPERIENCE ----------
+% \cvsection{Experience}
+
+% \entry{Inventory and Biling Managemnet System}{Jun 2025 -- Jul 2025}
+% Developed a Python \& MySQL-based Inventory and Billing Management System with separate customer and manager modules, featuring real-time stock updates, product management, pricing, and automated bill generation.
+
+% ---------- PROJECTS ----------
+% Bullet shape: every bullet is one line, each shorter than the one above,
+% with matching lengths across projects and training.
+\cvsection{Projects}
+
+\entry{WebRAG — Grounded Q\&A Bot \; | \; \href{https://github.com/mukesh4783/webRAG}{GitHub}}{Jul 2026}
+\begin{tightitemize}
+    \item Built a RAG app answering only from live web pages via LangChain, nomic-embed-text, Chroma and Gemma 4.
+    \item Detected page updates via SHA-256 hashing with a unified-diff freshness report and auto re-indexing.
+    \item Cut hallucinations to near 0\% on out-of-scope queries; raised retrieval relevance by $\sim$30\%.
+    \item Tech used: Python, LangChain, Ollama, Gemma 4, Chroma Vector DB, Streamlit
+\end{tightitemize}
+
+\vspace{5pt}
+\entry{GramSetu — Digital Village Management Portal \; | \; \href{https://github.com/mukesh4783/Digital_Village_Management_Portal}{GitHub}}{Jul 2026}
+\begin{tightitemize}
+  \item Architected a full-stack governance portal digitizing 10+ citizen workflows with real-time tracking and JWT auth.
+  \item Built an admin analytics dashboard (Chart.js), improving service-request processing visibility by $\sim$45\%.
+  \item Integrated a multilingual Gemini 2.5 Flash chatbot; scaled to 500+ sessions at 99\% uptime.
+  \item Tech used: React, Node.js, Express.js, MongoDB Atlas, Gemini API, JWT, Vercel
+\end{tightitemize}
+
+\vspace{5pt}
+\entry{Manimax \; | \; \href{https://github.com/pxkuma/manimax}{GitHub}}{Apr 2026}
+\begin{tightitemize}
+    \item Built a DeepSeek + Qwen3-Coder pipeline turning topics into narrated Manim videos; cut scripting time $\sim$70\%.
+    \item Added DeepSeek code review, stage validators and deterministic fixes for known Manim render errors.
+    \item Shipped per-chapter regeneration via feedback, synced notes and narration in 8 languages.
+    \item Tech used: Python, Manim, Ollama, edge-tts, Node.js, Express, Docker, FFmpeg
+\end{tightitemize}
+
+% ---------- TRAINING ----------
+\cvsection{Training}
+
+\entry{AI Engineer Launchpad Mastering LLMs and Agentic AI \; | \; \href{https://drive.google.com/file/d/1SDnWu9bymSSRnNE1fGNPuVoSUJZ76WHd/view?usp=sharing}{Certificate}}{May 2026 -- Jun 2026}
+\begin{tightitemize}
+    \item Built a solid foundation in LLMs and Transformers, covering attention, tokenization, embeddings and pretraining.
+    \item Created RAG apps with LangChain and ChromaDB, covering chunking, semantic search and retrieval.
+    \item Applied zero-shot, few-shot, chain-of-thought and structured prompting with function calling.
+    \item Gained hands-on LoRA / QLoRA fine-tuning, quantization and instruction tuning.
+\end{tightitemize}
+
+% ---------- CERTIFICATES ----------
+\cvsection{Certificates}
+\begin{tightitemize}
+    \dateditem{Oracle AI Database Certified Foundations Associate \; | \; \href{https://catalog-education.oracle.com/pls/certview/sharebadge?id=53BD9ECC6E0C666FA5E6084B1047C99845AA1B75E7C942F5E2B8690763A3D1A2}{\textcolor{black}{Oracle}}}{Sep 2026}
+    \dateditem{Oracle Cloud Infrastructure AI Foundations Associate \; | \; \href{https://catalog-education.oracle.com/pls/certview/sharebadge?id=1F6F277ED4512CB44DC3BC4DA8718C9C371913CB716671AE2C4ED306AC50DA3E}{\textcolor{black}{Oracle}}}{Jul 2026}
+    \dateditem{Database Management System \; | \; \href{https://drive.google.com/file/d/1VTmmuJfczuPCOz-8V0OZDyBwctDQ6ehN/view?usp=drive_link}{\textcolor{black}{Infosys}}}{Aug 2026}
+    \dateditem{Programming Using C++ \; | \; \href{https://drive.google.com/file/d/168zU0YhxjP0dhuiwlumccxZJgJ9766aG/view?usp=drive_link}{\textcolor{black}{Infosys}}}{Aug 2025}
+\end{tightitemize}
+
+% ---------- ACHIEVEMENTS ----------
+\cvsection{Achievements}
+\begin{tightitemize}
+    \dateditem{Placed Top 15 in Resurgence Hackathon at Lovely Professional University for the Manimax project}{Apr 2026}
+    \dateditem{Delivered a paid Python \& MySQL Inventory and Billing System with real-time stock and auto-billing}{Jul 2025}
+\end{tightitemize}
+
+% ---------- EDUCATION ----------
+\cvsection{Education}
+
+\entry{Lovely Professional University}{Phagwara, Punjab}
+Bachelor of Technology - Computer Science and Engineering; CGPA: 8.89 \hfill \textit{Aug 2024 -- Present}
+
+\vspace{3pt}
+\entry{Army Public School}{Beas, Punjab}
+Intermediate; Percentage: 86\% \hfill \textit{Apr 2023 -- May 2024}
+
+\vspace{3pt}
+\entry{Army Public School}{Beas, Punjab}
+Matriculate; Percentage: 92.6\% \hfill \textit{Apr 2021 -- May 2022}
+
+\end{document}

@@ -1,60 +1,55 @@
-import React from 'react';
-import { MotionConfig, motion } from 'framer-motion';
-import { PROFILE } from '../../data/profile';
-import Icon from '../common/Icon';
-import FitPlayground from './FitPlayground';
-import HeroName from './HeroName';
-import HeroPortrait from './HeroPortrait';
-import { panel, rise } from './motion';
-import './Hero.css';
+import { motion } from 'motion/react';
+import { ArrowDown, ArrowUpRight } from '@phosphor-icons/react';
+import { profile } from '../../data/profile.js';
+import KineticName from './KineticName.jsx';
+import PreviewDeck from './PreviewDeck.jsx';
+import './hero.css';
+
+const rise = (delay) => ({
+  initial: { opacity: 0, y: 18 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1], delay },
+});
 
 export default function Hero() {
   return (
-    <MotionConfig reducedMotion="user">
-      <motion.section className="hero" id="top" initial="hidden" animate="shown">
-        <div className="wrap hero__grid">
-          <div className="hero__copy">
-            <motion.p className="hero__status" variants={rise} custom={-5}>
-              <span className="hero__live" aria-hidden="true" />
-              {PROFILE.status}
-            </motion.p>
-
-            <HeroName first={PROFILE.first} last={PROFILE.last} />
-
-            <motion.p className="hero__tagline" variants={rise} custom={0}>
-              I turn <span className="hero__messy">messy data<svg viewBox="0 0 200 20" preserveAspectRatio="none" aria-hidden="true"><path d="M2 14 C 30 4, 50 18, 80 10 S 130 4, 160 12 S 190 8, 198 6" /></svg></span> into answers you can <mark className="hero__mark">trust.</mark>
-            </motion.p>
-
-            <motion.p className="hero__lede" variants={rise} custom={1}>
-              Data science & ML student at LPU. I build retrieval systems, LLM pipelines and
-              analytics dashboards, and I measure whether they actually work.
-            </motion.p>
-
-            <motion.div className="hero__cta" variants={rise} custom={2}>
-              <a className="btn" href="#work">See my work <Icon name="arrow" /></a>
-              <a className="btn btn--ghost" href={PROFILE.resume} download>Résumé <Icon name="arrowDown" /></a>
-            </motion.div>
-
-            <motion.ul className="hero__meta" variants={rise} custom={3}>
-              <li><Icon name="pin" size={16} /> {PROFILE.location}</li>
-              <li><a href={PROFILE.github} target="_blank" rel="noreferrer"><Icon name="github" size={16} /> GitHub</a></li>
-              <li><a href={PROFILE.linkedin} target="_blank" rel="noreferrer"><Icon name="linkedin" size={16} /> LinkedIn</a></li>
-            </motion.ul>
-          </div>
-
-          <div className="hero__stage">
-            <HeroPortrait
-              src={PROFILE.photo}
-              alt={`Portrait of ${PROFILE.first} ${PROFILE.last}`}
-              initials={PROFILE.initials}
-            />
-            <motion.div className="hero__play" variants={panel}>
-              <p className="hero__note hand" aria-hidden="true">go on, break my model ↓</p>
-              <FitPlayground />
-            </motion.div>
-          </div>
+    <section className="hero" id="top">
+      <div className="hero__grid wrap">
+        <div className="hero__copy">
+          <motion.p className="hero__eyebrow mono" {...rise(0.05)}>
+            {profile.role}
+          </motion.p>
+          <KineticName first={profile.first} last={profile.last} />
+          <motion.p className="hero__lede" {...rise(1)}>
+            {profile.lede}
+          </motion.p>
+          <motion.div className="hero__ctas" {...rise(1.12)}>
+            <a className="btn" href="#work">
+              See the work <ArrowDown size={16} weight="bold" />
+            </a>
+            <a className="btn btn--ghost" href="#contact">
+              Say hello <ArrowUpRight size={16} weight="bold" />
+            </a>
+          </motion.div>
         </div>
-      </motion.section>
-    </MotionConfig>
+
+        <motion.div
+          className="hero__deck"
+          initial={{ opacity: 0, y: 40, rotate: 3 }}
+          animate={{ opacity: 1, y: 0, rotate: 0 }}
+          transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
+        >
+          <PreviewDeck />
+          <motion.span
+            className="hero__stamp mono"
+            initial={{ scale: 1.8, opacity: 0, rotate: -24 }}
+            animate={{ scale: 1, opacity: 1, rotate: 7 }}
+            transition={{ type: 'spring', stiffness: 260, damping: 15, delay: 1.5 }}
+          >
+            {profile.status}
+          </motion.span>
+        </motion.div>
+      </div>
+    </section>
   );
 }

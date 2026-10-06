@@ -1,25 +1,45 @@
-import React from 'react';
-import { PROJECTS } from '../../data/projects';
-import SectionHead from '../common/SectionHead';
-import ProjectCard from './ProjectCard';
-import './Work.css';
-import './viz/viz.css';
+import { useCallback, useState } from 'react';
+import { AnimatePresence } from 'motion/react';
+import { featured, more } from '../../data/projects.js';
+import Drafted from '../ui/Drafted.jsx';
+import WorkIndex from './WorkIndex.jsx';
+import Spread from './Spread.jsx';
+import MiniCard from './MiniCard.jsx';
+import MediaModal from './MediaModal.jsx';
+import './work.css';
+import './demos/demos.css';
+
+const LAYOUTS = Object.freeze(['stack', 'split', 'split-rev']);
 
 export default function Work() {
+  const [media, setMedia] = useState(null);
+  const close = useCallback(() => setMedia(null), []);
+
   return (
-    <section className="section work" id="work">
+    <section className="work" id="work" aria-labelledby="work-title">
       <div className="wrap">
-        <SectionHead
-          index="2"
-          code="mukesh.projects.sort_values('date', ascending=False)"
-          title="Things I’ve built, and how well they work."
-          lede="Every figure below is a small working model of the project — poke at it. The numbers next to it are what I measured on the real thing."
-          note="all interactive ✎"
-        />
-        <div className="work__list">
-          {PROJECTS.map((p, i) => <ProjectCard key={p.id} project={p} index={i} total={PROJECTS.length} />)}
+        <header className="work__head">
+          <Drafted id="work-title" className="work__title">Selected work</Drafted>
+          <p className="work__intro">
+            Six things I have built, three of them in depth. Each comes with a working plate or real output, so you can poke at it instead of reading about it.
+          </p>
+        </header>
+
+        <WorkIndex rows={[...featured, ...more]} />
+
+        {featured.map((p, i) => (
+          <Spread key={p.id} project={p} layout={LAYOUTS[i]} onOpen={setMedia} />
+        ))}
+
+        <h3 className="work__more">More projects</h3>
+        <div className="work__minis">
+          {more.map((p, i) => (
+            <MiniCard key={p.id} project={p} i={i} />
+          ))}
         </div>
       </div>
+
+      <AnimatePresence>{media && <MediaModal key={media.src} media={media} onClose={close} />}</AnimatePresence>
     </section>
   );
 }
