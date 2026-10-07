@@ -1,0 +1,26 @@
+iamneo:
+Data structures and algorithms - https://lpucolab438.examly.io/certificate/U2FsdGVkX19NKl01Qq%2BsUQpeKC42muGDlmREvdAw094%3D
+Object oriented programming - https://lpucolab438.examly.io/certificate/U2FsdGVkX19j1EFetw5FvQNObbOsZiwFCJcbxXvV4Ag%3D
+Programming in Java - https://lpucolab438.examly.io/certificate/U2FsdGVkX1%2FQVmbaMFeFqCTS7mEJUnFmZiaKj9GzvpM%3D
+Programming in C - https://lpucolab438.examly.io/certificate/U2FsdGVkX19Sog3gXfJOQLs73cEw3FMljHYQmhxP2ZU%3D
+
+oracle:
+Oracle AI Database Certified Foundations Associate - https://catalog-education.oracle.com/ords/certview/sharebadge?id=53BD9ECC6E0C666FA5E6084B1047C99845AA1B75E7C942F5E2B8690763A3D1A2
+
+Oracle Cloud Infrastructure Certified AI Foundations Associate - https://catalog-education.oracle.com/ords/certview/sharebadge?id=1F6F277ED4512CB44DC3BC4DA8718C9C371913CB716671AE2C4ED306AC50DA3E
+
+Infosys:
+Database Management System - https://drive.google.com/file/d/1VTmmuJfczuPCOz-8V0OZDyBwctDQ6ehN/view
+Programming Using C++ - https://drive.google.com/file/d/168zU0YhxjP0dhuiwlumccxZJgJ9766aG/view
+
+Lovely Professional University:
+AI Engineer Launchpad Mastering LLMs and Agentic AI - https://drive.google.com/file/d/1SDnWu9bymSSRnNE1fGNPuVoSUJZ76WHd/view
+
+Skillera:
+Effective Communication skill - https://drive.google.com/file/d/1nA3-qyDXRDmwrhO1oDoP4bBOLIZfAxmA/view?usp=sharing
+
+Coding Tantra:
+Introduction to DSA - https://drive.google.com/file/d/12dF9ZkyHkGJ-AL5ScPL9Ubkip1TEKn-z/view?usp=sharing
+
+Tech Veda:
+Data management (Excel & Tableau) - https://drive.google.com/file/d/1u6wNzVLOa6e9cfnI3_VUrS2Stgl61Bz1/view?usp=sharing

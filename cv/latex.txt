@@ -69,7 +69,6 @@
 \setlength{\parindent}{0pt}
 
 \begin{document}
-\fontsize{10.3pt}{12.4pt}\selectfont   % body size tuned so the CV fills exactly one page
 
 % ---------- HEADER ----------
 \name{Mukesh Kumar Pandey}\\[1pt]
@@ -107,7 +106,7 @@ Soft Skills:         & Problem-Solving, Time Management, Multitasking, Self-Lear
 \begin{tightitemize}
     \item Built a RAG app answering only from live web pages via LangChain, nomic-embed-text, Chroma and Gemma 4.
     \item Detected page updates via SHA-256 hashing with a unified-diff freshness report and auto re-indexing.
-    \item Cut hallucinations to near 0\% on out-of-scope queries; raised retrieval relevance by $\sim$30\%.
+    \item Cut hallucinations to near 0\% on off-topic queries; improved retrieval relevance by $\sim$30\%.
     \item Tech used: Python, LangChain, Ollama, Gemma 4, Chroma Vector DB, Streamlit
 \end{tightitemize}
 
@@ -115,17 +114,17 @@ Soft Skills:         & Problem-Solving, Time Management, Multitasking, Self-Lear
 \entry{GramSetu — Digital Village Management Portal \; | \; \href{https://github.com/mukesh4783/Digital_Village_Management_Portal}{GitHub}}{Jul 2026}
 \begin{tightitemize}
   \item Architected a full-stack governance portal digitizing 10+ citizen workflows with real-time tracking and JWT auth.
-  \item Built an admin analytics dashboard (Chart.js), improving service-request processing visibility by $\sim$45\%.
-  \item Integrated a multilingual Gemini 2.5 Flash chatbot; scaled to 500+ sessions at 99\% uptime.
+  \item Designed an admin analytics dashboard (Chart.js), improving service-request processing visibility by $\sim$45\%.
+  \item Integrated a multilingual Gemini 2.5 Flash chatbot; scaled to 500+ sessions at 90\% uptime.
   \item Tech used: React, Node.js, Express.js, MongoDB Atlas, Gemini API, JWT, Vercel
 \end{tightitemize}
 
 \vspace{5pt}
 \entry{Manimax \; | \; \href{https://github.com/pxkuma/manimax}{GitHub}}{Apr 2026}
 \begin{tightitemize}
-    \item Built a DeepSeek + Qwen3-Coder pipeline turning topics into narrated Manim videos; cut scripting time $\sim$70\%.
+    \item Created a DeepSeek + Qwen3-Coder pipeline turning topics into narrated Manim videos; cut scripting time $\sim$70\%.
     \item Added DeepSeek code review, stage validators and deterministic fixes for known Manim render errors.
-    \item Shipped per-chapter regeneration via feedback, synced notes and narration in 8 languages.
+    \item Shipped per-chapter regeneration from feedback, synced notes and multi-language narration.
     \item Tech used: Python, Manim, Ollama, edge-tts, Node.js, Express, Docker, FFmpeg
 \end{tightitemize}
 
@@ -134,10 +133,10 @@ Soft Skills:         & Problem-Solving, Time Management, Multitasking, Self-Lear
 
 \entry{AI Engineer Launchpad Mastering LLMs and Agentic AI \; | \; \href{https://drive.google.com/file/d/1SDnWu9bymSSRnNE1fGNPuVoSUJZ76WHd/view?usp=sharing}{Certificate}}{May 2026 -- Jun 2026}
 \begin{tightitemize}
-    \item Built a solid foundation in LLMs and Transformers, covering attention, tokenization, embeddings and pretraining.
-    \item Created RAG apps with LangChain and ChromaDB, covering chunking, semantic search and retrieval.
-    \item Applied zero-shot, few-shot, chain-of-thought and structured prompting with function calling.
-    \item Gained hands-on LoRA / QLoRA fine-tuning, quantization and instruction tuning.
+    \item Gained a solid foundation in LLMs and Transformers, covering attention, tokenization, embeddings and pre-training.
+    \item Developed RAG apps with LangChain and ChromaDB, covering chunking, semantic search and retrieval.
+    \item Used zero-shot, few-shot, chain-of-thought and structured prompting with function calling.
+    \item Achieved hands-on experience on LoRA / QLoRA fine-tuning, quantization and instruction tuning.
 \end{tightitemize}
 
 % ---------- CERTIFICATES ----------

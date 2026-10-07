@@ -27,5 +27,4 @@ export const log = Object.freeze([
   { msg: 'Certified: Programming Using C++ (Infosys)', when: 'Aug 2025', type: 'learn' },
   { msg: 'Delivered first paid client system', when: 'Jul 2025', type: 'ship' },
   { msg: 'Started B.Tech CSE at LPU', when: 'Aug 2024', type: 'edu' },
-  { msg: 'NCC "B" certificate, Grade A', when: 'May 2024', type: 'win' },
 ]);
